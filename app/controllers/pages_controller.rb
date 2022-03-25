@@ -3,6 +3,4 @@ class PagesController < ApplicationController
     end
     def about
     end
-    def articles
-    end
 end
