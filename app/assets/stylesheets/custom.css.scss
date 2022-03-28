@@ -1,0 +1,23 @@
+@import "bootstrap";
+
+a {
+    text-decoration: none;
+}
+
+.home-hero {
+    background-image: image_url("sunflowers.jpg");
+    height: 400px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+
+    .hero-text {
+        margin-top: auto;
+        margin-bottom: 30px;
+    }
+
+    a {
+        color: white;
+    }
+    
+}
