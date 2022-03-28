@@ -1,7 +1,8 @@
 class ArticlesController < ApplicationController
+    # this helper will run the method set_article before any of the code in the mentioned methods is run
+    before_action :set_article, only: [:show, :edit, :update, :destroy]
     #to display the article cxorresponding to the id in the url
     def show
-        @article = Article.find(params[:id])
     end
     #main page that displays all the articles
     def index
@@ -14,11 +15,10 @@ class ArticlesController < ApplicationController
     end
     # page for editing article
     def edit
-        @article = Article.find(params[:id])
     end
     #create method to save created article to db, redirect to diff page
     def create
-      @article = Article.new(params.require(:article).permit(:title, :description))
+      @article = Article.new(article_params)
       if @article.save
         flash[:notice] = "Article was created successfully."
       redirect_to @article
@@ -28,8 +28,7 @@ class ArticlesController < ApplicationController
     end
     # update exisitng article in db
     def update
-        @article = Article.find(params[:id])
-         if @article.update(params.require(:article).permit(:title, :description))
+         if @article.update(article_params)
          flash[:notice] = "Article was updated successfully!"
          redirect_to @article
         else
@@ -38,8 +37,17 @@ class ArticlesController < ApplicationController
     end
     #delete article
     def destroy
-        @article = Article.find(params[:id])
         @article.destroy
         redirect_to articles_path
     end
+
+    #anything put inside the private block will only be avalible to this controller, not outside it
+    private
+    def set_article
+    @article = Article.find(params[:id])
+    end
+    def article_params
+        params.require(:article).permit(:title, :description)
+    end
+
 end
