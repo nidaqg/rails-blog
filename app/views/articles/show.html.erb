@@ -1,10 +1,17 @@
-<h1>Showing article details</h1>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-sm-10">
+            <div class="card text-center mt-5 p-4">
+                <h1><%= @article.title %></h1>
+                    <div class="card-body">
+                        <p><%= @article.description %></p>
 
-<h3>Title: <%= @article.title %></h3>
-<p>Description: <%= @article.description %></p>
+                            <%= link_to 'Edit', edit_article_path(@article), class:"btn btn-primary" %>
+                            <%= link_to 'Delete', article_path(@article), method: :delete, data: {confirm: "Are you sure?"}, class:"btn btn-primary" %>
+                            <%= link_to 'Return to Article Listing', articles_path, class:"btn btn-primary" %>
+                    </div>
+            </div>
 
-<p>
-<%= link_to 'Edit', edit_article_path(@article) %> | 
-<%= link_to 'Delete', article_path(@article), method: :delete, data: {confirm: "Are you sure?"} %> |
-<%= link_to 'Return to Article Listing', articles_path %>
-</p>
+        </div>
+    </div>
+</div>
