@@ -1,23 +1,37 @@
-<% if @article.errors.any? %>
-<h2> The following errors prevented the article from being saved</h2>
-    <% @article.errors.full_messages.each do |error| %>
-        <%= error %><br/>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-sm-10">
+            <div class="card text-center mt-5 p-4">
 
-    <% end %>
-<% end %>
+                <% if @article.errors.any? %>
+                <h2> The following errors prevented the article from being saved</h2>
+                    <% @article.errors.full_messages.each do |error| %>
+                        <%= error %><br/>
 
-<%= form_with(model: @article, local: true) do |f| %>
-<p> 
-    <%= f.label :title %><br/>
-    <%= f.text_field :title %>
-</p>
+                    <% end %>
+                <% end %>
 
-<p>
-    <%= f.label :description %><br/>
-    <%= f.text_area :description %>
-</p>
+                <%= form_with(model: @article, local: true) do |f| %>
+                <div class="form-group row">
+                    <%= f.label :title, class: "col-4 col-form-label" %><br/>
+                    <div  class="col-8 mb-3">
+                    <%= f.text_field :title, class: "form-control" %>
+                    </div>
+                </div>
 
-<p>
-    <%= f.submit %>
-</p>
- <% end %>
+                <div class="form-group row">
+                    <%= f.label :description, class: "col-4 col-form-label" %><br/>
+                    <div  class="col-8">
+                    <%= f.text_area :description, rows: 10, class: "form-control" %>
+                    </div>
+                </div>
+
+                <div class="form-group mt-3 text-end">
+                    <%= f.submit class: "btn btn-outline-primary" %>
+                </div>
+                
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>
