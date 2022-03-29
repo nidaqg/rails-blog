@@ -2,7 +2,7 @@
     <div class="row justify-content-center">
         <div class="col-sm-10">
 
-         <%= render 'shared/errors' %>
+         <%= render 'shared/errors', obj: @article %>
             <div class="card text-center mt-5 p-4">
 
                 <%= form_with(model: @article, local: true) do |f| %>
