@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
     # this helper will run the method set_article before any of the code in the mentioned methods is run
     before_action :set_article, only: [:show, :edit, :update, :destroy]
-    #to display the article cxorresponding to the id in the url
+    #to display the article corresponding to the id in the url
     def show
     end
     #main page that displays all the articles
