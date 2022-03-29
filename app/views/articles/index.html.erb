@@ -9,7 +9,7 @@
 <% @articles.each do |article| %>
 <div class="card text-center mb-4 article-card">
     <div class="card-header text-muted">
-        written by Nida G.
+        written by <%= article.user.username %>
     </div>
     <div class="card-body">
         <h5 class="card-title"><%= article.title %></h5>
