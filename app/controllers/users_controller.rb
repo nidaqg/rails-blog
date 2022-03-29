@@ -3,6 +3,9 @@ def show
     @user = User.find(params[:id])
     @articles = @user.articles
 end
+def index
+    @users = User.all
+end
 def new
  @user = User.new   
 end
@@ -10,7 +13,7 @@ def create
 @user = User.new(user_params)
 if @user.save
     flash[:notice] = "Successful Signup!"
-    redirect_to articles_path
+    redirect_to @user
 else
     render 'new'
 end
@@ -24,7 +27,7 @@ def update
     @user = User.find(params[:id])
     if @user.update(user_params)
         flash[:notice] = "Your account was successfuly updated!"
-        redirect_to articles_path
+        redirect_to @user
     else
         render "edit"
     end
