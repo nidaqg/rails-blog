@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-sm-10 text-center">
+            <%= link_to 'Create New Article', new_article_path, class: "btn btn-secondary mb-4" %>
+
+            <% @articles.each do |article| %>
+            <div class="card text-center mb-4 article-card">
+                <div class="card-header text-muted">
+                    written by <%= article.user.username %>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title"><%= article.title %></h5>
+                    <p class="card-text"><%= truncate(article.description, length: 100) %></p>
+                    <%= link_to 'Show', article_path(article.id), class: "btn btn-primary" %>
+                    <%= link_to 'Edit', edit_article_path(article.id), class: "btn btn-primary" %>
+                    <%= link_to 'Delete', article_path(article.id), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-primary" %>
+                </div>
+                <div class="card-footer text-muted">
+                    Created <%= time_ago_in_words(article.updated_at) %> ago
+                </div>
+            </div>
+            <% end %>
+        </div>
+    </div>
+</div>
