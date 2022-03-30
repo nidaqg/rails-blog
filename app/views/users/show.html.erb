@@ -10,6 +10,12 @@
         </div>
     
         <h3 class="text-center mb-3"> My Articles</h3>
+        <% if logged_in? && @user == current_user %>
+            <p class="text-center">
+                <%= link_to 'New Article', new_article_path, class: "btn btn-outline-primary mb-4" %>
+            </p>
+        <% end %>
+
         <%= render 'articles/article' %>
 
     </div>
