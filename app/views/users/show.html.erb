@@ -2,7 +2,9 @@
     <div class="row justify-content-center">
         <div class="col-sm-10 text-center mb-4">
             <h1 class="mt-4"><%= @user.username %>'s Profile</h1>
-            <%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-outline-primary btn-sm" %><br/>
+            <% if logged_in? && @user == current_user %>
+                <%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-outline-primary btn-sm" %><br/>
+            <% end %>
             <%= gravatar_for @user, size: 200 %>
 
         </div>
