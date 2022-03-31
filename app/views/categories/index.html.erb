@@ -1,0 +1,18 @@
+<h1 class="text-center mt-4 mb-4">Categories</h1>
+<p class="text-center">
+    <%= link_to 'Creat New Category', new_category_path, class: "btn btn-outline-primary mb-4" %>
+</p>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-sm-10 text-center">
+
+            <% @categories.each do |category| %>
+            <div class="card text-center mb-4 p-3 article-card">
+                <h3> <%=category.name %> </h3>
+                <p class="text-muted">Created <%= time_ago_in_words(category.updated_at) %> ago </p>
+            </div>
+            <% end %>
+        </div>
+    </div>
+</div>
