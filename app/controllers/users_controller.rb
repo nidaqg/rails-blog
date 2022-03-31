@@ -53,6 +53,6 @@ def require_same_user
       flash[:alert] = "You can only edit your own profile"
       redirect_to @user
     end
-  end
+end
 
 end
